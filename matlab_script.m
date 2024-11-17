@@ -1,0 +1,12 @@
+heatwave = readtable("heatwave_by_basins.csv");
+basins = readgeotable("majorbasins/MAJBAS_POLY.shp");
+merged = outerjoin(basins, heatwave, "LeftKeys","NAME", "RightKeys","Basin");
+figure;
+geoplot(merged, ColorVariable = "AverageHeatwaveDuration");
+title('Average Heatwave Duration in Massachusetts Basins');
+cmap = flipud(autumn);
+colormap(cmap);
+cb = colorbar;
+cb.Label.String = "Heatwave Duration in Days";
+output_path = 'C:\\Users\\User\\Documents\\College\\hackathon\\website\\static\\images\\heatwave_figure.png';
+saveas(gcf, output_path);

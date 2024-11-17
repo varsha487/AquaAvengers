@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html>
+
+
+<head>
+    <title>Aqua Avengers</title>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <script>
+        // Function to limit the selection of checkboxes
+        function limitCheckboxSelection() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            let checkedCount = 0;
+
+            checkboxes.forEach(function(checkbox) {
+                // Count how many checkboxes are checked
+                if (checkbox.checked) {
+                    checkedCount++;
+                }
+            });
+
+            // If two checkboxes are checked, disable the others
+            if (checkedCount >= 2) {
+                checkboxes.forEach(function(checkbox) {
+                    if (!checkbox.checked) {
+                        checkbox.disabled = true;  // Disable unchecked checkboxes
+                    }
+                });
+            } else {
+                checkboxes.forEach(function(checkbox) {
+                    checkbox.disabled = false;  // Re-enable all checkboxes
+                });
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Aqua Avengers Risk Assessment Tool</h1>
+<div id = "container">
+<div id = "make-choice">
+    <h2>Choose What To Display</h2>
+    <form method="POST">
+        <label>
+            <input type="radio" name="feature" value="Average heatwaves duration" required>
+            Average heatwaves duration
+        </label><br>
+
+        <label>
+            <input type="radio" name="feature" value="Number of days above 95°F">
+            Number of days above 95°F
+        </label><br>
+
+        <label>
+            <input type="radio" name="feature" value="Consecutive wet days">
+            Consecutive wet days
+        </label><br>
+
+        <label>
+            <input type="radio" name="feature" value="Total precipitation">
+            Total precipitation
+        </label><br>
+
+        <label>
+            <input type="radio" name="feature" value="Population">
+            Population
+        </label><br>
+
+        <label>
+            <input type="radio" name="feature" value="DOR Income Per Capita">
+            Income
+        </label><br>
+
+        <button type="submit">Generate Image</button>
+    </form>
+</div>
+
+<div id="output-img">
+    {% if image_generated %}
+        <h2>Map:</h2>
+        <img src="{{ url_for('serve_image', filename=image_filename) }}" alt="Generated Map">
+    {% endif %}
+
+</div>
+</div>
+</body>
+
+
+</html>

@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Roboto+Slab:wght@100..900&display=swap');
+*{
+    padding: 3;
+    margin: 0;
+    background: lightblue;
+    
+}
+h1,h2
+{
+    font-family: "Orbitron";
+    margin: 3%;
+}
+
+input[type="radio"] {
+    transform: scale(1.5);  /* Scale the checkbox to 1.5 times its normal size */
+    margin: 10px;           /* Add space around the checkbox */
+}
+
+input[type="radio"]:hover {
+    transform: scale(1.7);  /* Scale the checkbox to 1.5 times its normal size */
+           /* Add space around the checkbox */
+}
+
+button:hover 
+{
+    transform: scale(1.1);
+    background-color: darkcyan;
+    cursor: pointer;
+}
+
+button
+{
+    border-radius: 10px;
+    font-family: "Orbitron";
+    font-size: larger;
+    margin: 3%;
+}
+
+#make-choice {
+    flex: 1;  /* Take up available space */
+    margin-left: 7%;
+}
+
+
+
+#output-img {
+    flex: 1;  /* Take up more space than the left div */
+    margin: 3%;
+}
+
+#container {
+    display: flex;         /* Enable Flexbox */
+    justify-content: space-between;  /* Space out the elements evenly */
+    align-items: flex-start;  /* Align items to the top of the container */
+    gap: 20px;              /* Add space between the divs */
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
